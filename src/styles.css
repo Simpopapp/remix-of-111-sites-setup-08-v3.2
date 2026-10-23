@@ -1,0 +1,252 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system tokens v3 (PRD project3 D1/D2) — OKLCH.
+ *
+ * Base do produto: superfície de leitura clara e tinta bem contrastada.
+ * Superfícies são MATERIAIS que indicam a tarefa (planejamento §5.2):
+ *   leitura (--background) · card elevado (--card) · bloco editorial
+ *   (--paper/--ink) · bancada instrumental (--bench-*) · registro de
+ *   evidência (--evidence).
+ * Violeta volta a papel de marca (CTA primário, foco, identidade); estados
+ * mantêm acentos exclusivos. Nenhuma cor literal em componentes.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-paper: var(--paper);
+  --color-paper-muted: var(--paper-muted);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-accent-2: var(--accent-2);
+  --color-accent-2-foreground: var(--accent-2-foreground);
+  --color-bench: var(--bench);
+  --color-bench-foreground: var(--bench-foreground);
+  --color-bench-muted: var(--bench-muted);
+  --color-bench-border: var(--bench-border);
+  --color-bench-accent: var(--bench-accent);
+  --color-bench-accent-foreground: var(--bench-accent-foreground);
+  --color-evidence: var(--evidence);
+  --color-evidence-foreground: var(--evidence-foreground);
+  --color-evidence-muted: var(--evidence-muted);
+  --color-evidence-border: var(--evidence-border);
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+/* Tema claro ativo: leitura prolongada em superfície neutra quente (D1). */
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.982 0.007 85);
+  --foreground: oklch(0.26 0.018 265);
+  --card: oklch(0.995 0.004 85);
+  --card-foreground: oklch(0.26 0.018 265);
+  --popover: oklch(0.995 0.004 85);
+  --popover-foreground: oklch(0.26 0.018 265);
+  /* Violeta de marca: escurecido para contraste AA como texto/CTA no claro. */
+  --primary: oklch(0.5 0.2 285);
+  --primary-foreground: oklch(0.985 0.006 85);
+  --secondary: oklch(0.945 0.01 85);
+  --secondary-foreground: oklch(0.3 0.02 265);
+  --muted: oklch(0.955 0.008 85);
+  --muted-foreground: oklch(0.47 0.02 265);
+  --accent: oklch(0.945 0.014 85);
+  --accent-foreground: oklch(0.28 0.02 265);
+  --destructive: oklch(0.55 0.21 27);
+  --destructive-foreground: oklch(0.985 0.006 85);
+  --border: oklch(0.3 0.02 265 / 13%);
+  --input: oklch(0.3 0.02 265 / 19%);
+  --ring: oklch(0.5 0.2 285);
+  --success: oklch(0.5 0.15 152);
+  --success-foreground: oklch(0.985 0.006 85);
+  --warning: oklch(0.55 0.13 70);
+  --warning-foreground: oklch(0.985 0.006 85);
+  /* Segundo acento funcional: estados informativos. --info é alias (D12 p2). */
+  --accent-2: oklch(0.52 0.12 230);
+  --accent-2-foreground: oklch(0.985 0.006 85);
+  --info: var(--accent-2);
+  --info-foreground: var(--accent-2-foreground);
+  /* Bloco editorial de leitura longa: papel levemente distinto da base. */
+  --paper: oklch(0.97 0.01 80);
+  --paper-muted: oklch(0.93 0.012 85);
+  --ink: oklch(0.27 0.018 265);
+  --ink-muted: oklch(0.44 0.018 265);
+  /* Bancada instrumental escura (laboratórios, instrumentos — D1/F4). */
+  --bench: oklch(0.21 0.022 265);
+  --bench-foreground: oklch(0.95 0.012 85);
+  --bench-muted: oklch(0.72 0.018 265);
+  --bench-border: oklch(0.95 0.012 85 / 13%);
+  --bench-accent: oklch(0.75 0.15 285);
+  --bench-accent-foreground: oklch(0.18 0.02 285);
+  /* Registro de evidência: superfície própria, distinta de leitura e card. */
+  --evidence: oklch(0.955 0.02 75);
+  --evidence-foreground: oklch(0.27 0.02 265);
+  --evidence-muted: oklch(0.45 0.02 265);
+  --evidence-border: oklch(0.55 0.12 75 / 30%);
+}
+
+/* Variante escura mantida coerente (não ativa por padrão neste remix — D1).
+   Violeta volta ao tom claro que lê sobre o shell escuro. */
+.dark {
+  --background: oklch(0.165 0.014 265);
+  --foreground: oklch(0.93 0.012 85);
+  --card: oklch(0.205 0.016 265);
+  --card-foreground: oklch(0.93 0.012 85);
+  --popover: oklch(0.22 0.016 265);
+  --popover-foreground: oklch(0.93 0.012 85);
+  --primary: oklch(0.70 0.16 277);
+  --primary-foreground: oklch(0.18 0.02 277);
+  --secondary: oklch(0.27 0.02 265);
+  --secondary-foreground: oklch(0.93 0.012 85);
+  --muted: oklch(0.245 0.016 265);
+  --muted-foreground: oklch(0.74 0.015 265);
+  --accent: oklch(0.27 0.02 265);
+  --accent-foreground: oklch(0.93 0.012 85);
+  --destructive: oklch(0.76 0.14 25);
+  --destructive-foreground: oklch(0.18 0.015 265);
+  --border: oklch(0.93 0.012 85 / 10%);
+  --input: oklch(0.93 0.012 85 / 14%);
+  --ring: oklch(0.70 0.16 277);
+  --success: oklch(0.80 0.13 150);
+  --success-foreground: oklch(0.18 0.04 150);
+  --warning: oklch(0.84 0.12 65);
+  --warning-foreground: oklch(0.2 0.04 65);
+  --accent-2: oklch(0.78 0.10 210);
+  --accent-2-foreground: oklch(0.18 0.015 265);
+  --info: var(--accent-2);
+  --info-foreground: var(--accent-2-foreground);
+  --paper: oklch(0.97 0.01 85);
+  --paper-muted: oklch(0.93 0.012 85);
+  --ink: oklch(0.24 0.015 265);
+  --ink-muted: oklch(0.43 0.015 265);
+  --bench: oklch(0.13 0.014 265);
+  --bench-foreground: oklch(0.93 0.012 85);
+  --bench-muted: oklch(0.70 0.015 265);
+  --bench-border: oklch(0.93 0.012 85 / 10%);
+  --bench-accent: oklch(0.75 0.14 285);
+  --bench-accent-foreground: oklch(0.15 0.02 285);
+  --evidence: oklch(0.23 0.02 75);
+  --evidence-foreground: oklch(0.93 0.012 85);
+  --evidence-muted: oklch(0.70 0.015 265);
+  --evidence-border: oklch(0.80 0.1 75 / 35%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    background-color: var(--color-background);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklch, var(--color-primary) 25%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Barra de rolagem fina para logs e painéis (PRD project2 F2). */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--color-muted);
+    border-radius: 999px;
+  }
+  .scrollbar-bench::-webkit-scrollbar-thumb {
+    background: var(--color-bench-border);
+  }
+
+  /* Bloco editorial longo: papel com tinta própria (D1/F3). */
+  .prose-paper {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    border: 1px solid var(--color-border);
+  }
+  .prose-paper .text-muted {
+    color: var(--color-ink-muted);
+  }
+
+  /* Bancada instrumental: superfície escura de observação/comparação (F4). */
+  .bench {
+    background: var(--color-bench);
+    color: var(--color-bench-foreground);
+    border: 1px solid var(--color-bench-border);
+  }
+
+  /* Registro de evidência: onde o trabalho do aluno fica inspecionável. */
+  .surface-evidence {
+    background: var(--color-evidence);
+    color: var(--color-evidence-foreground);
+    border: 1px solid var(--color-evidence-border);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
