@@ -54,6 +54,7 @@ Can you help me with the following actions:
 - `/library` é a dona do catálogo (componente compartilhado `src/components/library/catalog.tsx` com ?q=/?cat=); a home `/` é mesa de trabalho e NÃO volta a listar o acervo.
 - A home decide a ação interrompida com a função pura `src/lib/next-action.ts` (`computeHomeState`); objetivos sem percurso correspondente são ADMITIDOS (sem fallback silencioso — usar `objectiveRouteStatus` de recommend.ts), nunca encaminhados ao 1º percurso.
 - Pilares do Project 3: `.opencode/project3.md` · `.opencode/prd-project3.md` · `.opencode/roadmap-proj3` (execução do remix vive lá).
+- Busca da biblioteca é pura em `src/lib/library-search.ts` (motivo da relevância por resultado; correspondência fraca rotulada e por último; `depth` restringe a conceitos); `catalog.tsx` apenas renderiza e sincroniza ?q/?cat/?type/?depth/?view na URL.
 
 
 ## Qualidade pedagógica
