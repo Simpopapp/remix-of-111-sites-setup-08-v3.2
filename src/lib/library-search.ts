@@ -143,6 +143,9 @@ interface Match {
 }
 
 function combineReasons(matches: Match[]): { reason: string; source: ReasonSource; weak: boolean } {
+  if (matches.length === 0) {
+    return { reason: "", source: "tema", weak: false };
+  }
   const sorted = [...matches].sort(
     (a, b) => REASON_PRIORITY.indexOf(a.source) - REASON_PRIORITY.indexOf(b.source),
   );
