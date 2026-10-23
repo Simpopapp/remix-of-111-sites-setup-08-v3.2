@@ -20,11 +20,11 @@ E2E das telas tocadas · nenhum teste contratado enfraquecido.
 - [x] F1 concluída
 
 ## F2 — Biblioteca: problema, mecanismo e contraste (PRD §3/F2)
-- [ ] Busca inclui aulas+labs+missões com motivo e tipo de experiência
-- [ ] Cards: problema + ação aprendida + representação (analogia sai do resumo)
-- [ ] Categorias com apresentação própria; vazio orientado; filtros preservados
-- Gates F2: tsgo · vitest (+library-search) · build · e2e_f2_library
-- [ ] F2 concluída
+- [x] Busca inclui aulas+labs+missões com motivo e tipo de experiência
+- [x] Cards: problema + ação aprendida + representação (analogia sai do resumo)
+- [x] Categorias com apresentação própria; vazio orientado; filtros preservados
+- Gates F2: tsgo OK · vitest 141/141 (+library-search: 14 testes) · build OK · e2e_f2_library verde (7 passos: sintoma com motivo, categoria editorial, filtros preservados ao voltar, vazio orientado, visão compacta, filtro de tipo; 0 pageerrors) · nenhum teste contratado enfraquecido
+- [x] F2 concluída
 
 ## F3 — Aula: compreensão guiada, consulta e prática (PRD §3/F3, 9.6)
 - [ ] Modos guided/reference/practice (?mode=)
