@@ -3,11 +3,10 @@
 // relevância) e que tipo de experiência entrega. Correspondência fraca (só
 // tema ou número) é rotulada e nunca apresentada como diagnóstico.
 
-import type { Category } from "@/lib/concepts";
-import { CONCEPTS } from "@/lib/concepts";
+import { CONCEPTS, type Category } from "@/lib/concepts";
 import { LABS } from "@/lib/labs";
 import { MISSIONS } from "@/lib/missions";
-import { hasLesson } from "@/lib/lessons";
+import { LESSONS, hasLesson } from "@/lib/lessons";
 import type { Lesson } from "@/lib/lessons/types";
 import { matchSymptoms, type SymptomEntry } from "@/lib/symptoms";
 
@@ -166,7 +165,6 @@ function lessonFor(id: number): Lesson | undefined {
   return hasLesson(id) ? (LESSONS_BY_ID.get(id) ?? undefined) : undefined;
 }
 
-import { LESSONS } from "@/lib/lessons";
 const LESSONS_BY_ID = new Map(LESSONS.map((l) => [l.id, l]));
 
 function conceptResult(
